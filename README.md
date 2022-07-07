@@ -1,4 +1,4 @@
-Link do prezentacji dziaÂ³ania - https://streamable.com/g1tnza
+Link do prezentacji dzialania - https://streamable.com/g1tnza
 
 Google Drive: https://drive.google.com/drive/folders/18fraPfUdwoUg0n0sy9ytlppYf6Xo7oBR?usp=sharing
 
@@ -20,11 +20,11 @@ For linux might be necessary to add -pthread flag for compiler
 
 #PL
 Wymagany C++20
-Na systemie windows program uruchomiæ mo¿na przy pomocy pliku .exe dolaczonego do archiwum SensorNetworkSimulatorEXE.zip
+Na systemie windows program uruchomic mozna przy pomocy pliku .exe dolaczonego do archiwum SensorNetworkSimulatorEXE.zip
 
-Natomiast druga paczka, nie zawiera pliku .exe i mo¿liwe jest jej skompilowanie w dowolnie wybranym œrodowisku, wszystkie pliki mo¿na umieœciæ w jednym folderze i np. przy pomocy Developer Command Prompt for VS20XX wykonaæ polecenie
+Natomiast druga paczka, nie zawiera pliku .exe i mozliwe jest jej skompilowanie w dowolnie wybranym srodowisku, wszystkie pliki mozna umiescic w jednym folderze i np. przy pomocy Developer Command Prompt for VS20XX wykonanie polecenie
 "cl -std:c++20 main.cpp"
-a nastêpnie:
+a nastepnie:
 "main.exe"
 
-Dla linuxa przy kompilacji mo¿e byæ wymagana flaga -pthread 
+Dla linuxa przy kompilacji moze byc wymagana flaga -pthread 
