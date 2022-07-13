@@ -4,6 +4,7 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <time.h>
 
 
 //Class which represents messages
@@ -27,14 +28,9 @@ public:
 				break;
 			}
 			}
-		wchar_t buf[26];
-		errno_t err;
-		time(&_time);
-		err = _wctime_s(buf, 26, &_time);
-		std::wstring ws(buf);
-		std::string str(ws.begin(), ws.end());
+			time_t my_time = time(NULL);
 		
-		_message = "Sensor[" + std::to_string(_sensorId) + "] measured: " + std::to_string(_measurement) + sign + " Time: " + str;
+		_message = "Sensor[" + std::to_string(_sensorId) + "] measured: " + std::to_string(_measurement) + sign + " Time: " + ctime(&my_time);
 
 	}
 	std::string getMessage() {

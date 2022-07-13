@@ -10,7 +10,7 @@ class Node
 {
 public:
 	Node(size_t bufferSize):_bufferSize(bufferSize){
-		_buffer = CircularBuffer(bufferSize);
+		_buffer.setBufferSize(_bufferSize);
 	};
 	~Node() {};
 	//Publishing sensor values to circular buffer
@@ -19,12 +19,13 @@ public:
 		_buffer.push(topic);
 	}
 	std::vector<Topic> getCollectedData() {
+		std::unique_lock lock(_mutex);
 		return _buffer.getAllData();
 	}
 
 private:
 	mutable std::shared_mutex _mutex;
-	size_t _bufferSize;
-	CircularBuffer _buffer;
+	size_t _bufferSize{};
+	CircularBuffer _buffer{0};
 };
 

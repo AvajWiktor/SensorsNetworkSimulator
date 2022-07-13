@@ -7,7 +7,6 @@
 class CircularBuffer
 {
 public:
-	CircularBuffer() {};
 	CircularBuffer(size_t bufferCapacity):_bufferCapacity(bufferCapacity){}
 	
 	void push(Topic t) {
@@ -29,6 +28,9 @@ public:
 	}
 	std::vector<Topic> getAllData() {
 		return _buffer;
+	}
+	void setBufferSize(size_t size){
+	_bufferCapacity = size;
 	}
 private:
 	std::vector<Topic> _buffer;

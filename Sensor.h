@@ -3,7 +3,6 @@
 #include <thread>
 #include <chrono>
 #include <atomic>
-#include <stop_token>
 #include <random>
 #include "Node.h"
 #include "Topic.h"
