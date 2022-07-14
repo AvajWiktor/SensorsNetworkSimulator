@@ -3,8 +3,6 @@
 #include "TemperatureSensor.h"
 #include "PressureSensor.h"
 #include "HummiditySensor.h"
-#include <iostream>
-#include "CircularBuffer.h"
 #include <unordered_map>
 #include <memory>
 #include "Client.h"
@@ -23,21 +21,21 @@ public:
 		}
 		std::cout << "System finished job" << std::endl;
 	}
-	void addSensor(Sensor::SensorType sensorType) {
+	void addSensor(SensorType sensorType) {
 		int newId = _sensors.size();
 		while (_sensors.find(newId) != _sensors.end()){
 			newId++;
 		}
 		switch (sensorType) {
-			case Sensor::SensorType::TEMP: {
+			case SensorType::TEMP: {
 				_sensors[newId]= std::make_unique<TemperatureSensor>(newId, _mainNode);
 				break;
 			}
-			case Sensor::SensorType::HUM: {
+			case SensorType::HUM: {
 				_sensors[newId] = std::make_unique<HumiditySensor>(newId, _mainNode);
 				break;
 			}
-			case Sensor::SensorType::PRESS: {
+			case SensorType::PRESS: {
 				_sensors[newId] = std::make_unique<PressureSensor>(newId, _mainNode);
 				break;
 			}

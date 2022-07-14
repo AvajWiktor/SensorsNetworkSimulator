@@ -1,22 +1,14 @@
 #pragma once
-#include <vector>
 #include <thread>
-#include <chrono>
 #include <atomic>
 #include <random>
 #include "Node.h"
-#include "Topic.h"
-#include <iostream>
+
 class Sensor
 {
 public:
 		virtual ~Sensor() {}
-		enum SensorType
-		{
-			TEMP = 0,
-			HUM = 1,
-			PRESS = 2
-		};
+		
 		virtual SensorType getType() = 0;
 		void stopMeasure() {
 			std::cout << "I stopped measuring" << std::endl;

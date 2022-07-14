@@ -1,10 +1,7 @@
 #pragma once
 #include <string>
-#include <chrono>
-#include <ctime>
-#include <iomanip>
-#include <sstream>
-#include <time.h>
+#include "sUtilities.h"
+
 
 
 //Class which represents messages
@@ -12,18 +9,18 @@ class Topic
 {
 
 public:
-	Topic(int sensorId, float measurement, int sensorType) : _sensorId(sensorId),_measurement(measurement), _sensorType(sensorType) {
+	Topic(int sensorId, float measurement, SensorType sensorType) : _sensorId(sensorId),_measurement(measurement), _sensorType(sensorType) {
 		std::string sign{};
 		switch (_sensorType) {
-			case 0: {
+			case SensorType::TEMP: {
 				sign = "\370C";
 				break;
 			}
-			case 1: {
+			case SensorType::HUM: {
 				sign = "%";
 				break;
 			}
-			case 2: {
+			case SensorType::PRESS: {
 				sign = "Pa";
 				break;
 			}
@@ -41,34 +38,13 @@ public:
 	float getRawMeasurement() {
 		return _measurement;
 	}
-	int getSensorType() {
+	SensorType getSensorType() {
 		return _sensorType;
 	}
-	static std::string getCurrentUTC() {
-		struct tm newtime;
-		std::string am_pm = "AM";
-		__time64_t long_time;
-		char timebuf[26];
-		errno_t err;
-
-		// Get time as 64-bit integer.
-		_time64(&long_time);
-		// Convert to local time.
-		err = _localtime64_s(&newtime, &long_time);
-		if (err)
-		{
-			printf("Invalid argument to _localtime64_s.");
-			exit(1);
-		}
-
-		std::ostringstream oss;
-		oss << std::put_time(&newtime, "%d-%m-%Y %H:%M:%S");
-		 
-		return oss.str();
-	}
+	
 private:
 	int _sensorId{ 0 };
-	int _sensorType{ 0 };
+	SensorType _sensorType;
 	float _measurement{ 0.0 };
 	std::string _message{};
 };

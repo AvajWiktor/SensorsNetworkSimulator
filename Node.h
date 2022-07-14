@@ -1,5 +1,4 @@
 #pragma once
-#include "Topic.h"
 #include "CircularBuffer.h"
 #include <shared_mutex>
 #include <mutex>
