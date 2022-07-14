@@ -67,7 +67,6 @@ public:
 		return oss.str();
 	}
 private:
-	time_t _time{};
 	int _sensorId{ 0 };
 	int _sensorType{ 0 };
 	float _measurement{ 0.0 };
