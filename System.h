@@ -45,6 +45,7 @@ public:
 	}
 	bool subscribe(std::string name, std::unique_ptr<Client> client) {
 		std::unique_lock lock(_mutex);
+		//Check if subscriber already exists in system
 		if (_subscribents.find(name) == _subscribents.end()) {
 			_subscribents[name] = std::move(client);
 			return true;
@@ -112,7 +113,7 @@ public:
 
 private:
 	bool _systemStatus = true;
-	mutable std::shared_mutex _mutex;
+	mutable std::mutex _mutex;
 	std::thread _worker = std::thread(&System::notifySubscribents, this);
 	bool _notifyFlag = false;
 	bool _fullNotification = false;

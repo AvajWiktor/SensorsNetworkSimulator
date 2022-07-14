@@ -20,6 +20,7 @@ public:
 	}
 	std::vector<Topic> getCollectedData() {
 		std::unique_lock lock(_mutex);
+		// for testing purposes std::cout << "Test" << _buffer[_bufferSize].getMessage()<<std::endl;
 		return _buffer.getAllData();
 	}
 
