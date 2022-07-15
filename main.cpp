@@ -1,13 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <filesystem>
-#include <string>
-#include <vector>
-#include <thread>
-#include <chrono>
-#include <atomic>
 #include "System.h"
-#include "Client.h"
 
 int main()
 {
@@ -24,8 +15,8 @@ int main()
     //Subscribe sensor notifications by mirek
     s.subscribe(clients[1].getName(), std::make_unique<Client>(clients[1]));
     //Add some example sensors
-    s.addSensor(Sensor::SensorType::HUM);
-    s.addSensor(Sensor::SensorType::PRESS);
+    s.addSensor(SensorType::HUM);
+    s.addSensor(SensorType::PRESS);
 
     //Example loop to make program responsible and editable during runtime
     char tmp = '0';
@@ -41,19 +32,19 @@ int main()
             }
             //Add new humidity sensor
             case 'h': {
-                s.addSensor(Sensor::SensorType::HUM);
+                s.addSensor(SensorType::HUM);
                 break;
             }
             //Add new temperature sensor
 
             case 't': {
-                s.addSensor(Sensor::SensorType::TEMP);
+                s.addSensor(SensorType::TEMP);
                 break;
             }
             //Add new pressure sensor
 
             case 'p': {
-                s.addSensor(Sensor::SensorType::PRESS);
+                s.addSensor(SensorType::PRESS);
                 break;
             }
             //Start notyfing clients with default printing last value received by client
@@ -71,8 +62,14 @@ int main()
                 s.startNotifying(true);
                 break;
             }
+            //Stop Sensor Measurement
             case'm': {
                 s.stopSensorMeasurements(0);
+                break;
+            }
+            //List all sensors
+            case'l': {
+                s.listSensors();
                 break;
             }
         }
